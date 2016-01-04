@@ -29,12 +29,14 @@
     
     //*******************************************添加索引视图:只需一个初始化方法**************************************
     
-    WLIndexView *indexView = [WLIndexView viewWithFrame:CGRectMake(self.view.bounds.size.width-30, 50, 30, 500) indexTitles:self.sectionTitles tableView:self.tableView tableViewSectionsCount:self.sectionTitles.count];
+    WLIndexView *indexView = [WLIndexView viewWithFrame:CGRectMake(self.view.bounds.size.width-30, 50, 30, 500)
+                                            indexTitles:self.sectionTitles
+                                              tableView:self.tableView
+                                 tableViewSectionsCount:self.sectionTitles.count];
     [self.view addSubview:indexView];
     
     //其它个性化设置
     indexView.isHaveAnimation = YES;
-//    indexView.backgroundColor = [UIColor clearColor];
     indexView.titleFont = [UIFont systemFontOfSize:14];
     [indexView setTitleColor:[UIColor redColor] titleIndex:3];
     [indexView setTitleFont:[UIFont systemFontOfSize:25] titleIndex:5];
