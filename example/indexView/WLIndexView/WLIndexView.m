@@ -23,19 +23,20 @@
     self = [super initWithFrame:frame];
     if (self) {
         if (indexTitles.count) {
-            self.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
-            self.tableView = tableView;
-            self.sectionsCount = sectionsCount;
-            self.indexTitles = indexTitles;
             if (self.indexTitles.count > self.sectionsCount){
 #ifdef DEBUG
                 NSLog(@"Error: sectionsCount必须大于或等于indexTitles的数量");
 #endif
                 return nil;
             }
-            [self creatIndexBtnsWithIndexs:self.indexTitles];
+            self.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
+            self.tableView = tableView;
+            self.sectionsCount = sectionsCount;
+            self.indexTitles = indexTitles;
+            self.btnEdgeInsets = UIEdgeInsetsZero;
             UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panInWhichIndexButton:)];
             [self addGestureRecognizer:panGesture];
+            [self creatIndexBtnsWithIndexs:self.indexTitles];
         }
     }
     return self;
@@ -70,6 +71,7 @@
             [btn setTitle:indexTitles[i] forState:UIControlStateNormal];
         }else if ([indexTitles[i] isKindOfClass:[UIImage class]]){//设置图片
             [btn setImage:indexTitles[i] forState:UIControlStateNormal];
+            [btn setContentEdgeInsets:self.btnEdgeInsets];
         }
         
         [self setButtonStyleWithBtn:btn];
@@ -166,6 +168,17 @@
             UIButton *btn = self.subviews[index];
             if ([self.indexTitles[index] isKindOfClass:[NSString class]]){
                 btn.titleLabel.font = titleFont;
+            }
+        }
+    }
+}
+
+- (void)setBtnContentEdgeInsets:(UIEdgeInsets)edgeInsets imageIndex:(NSInteger)index{
+    for (int i = 0; i < self.subviews.count; i++) {
+        if (i == index) {
+            UIButton *btn = self.subviews[index];
+            if (btn.imageView.image != nil){
+                [btn setImageEdgeInsets:edgeInsets];
             }
         }
     }

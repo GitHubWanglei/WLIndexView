@@ -18,9 +18,10 @@ typedef NSInteger (^tapBlock) (NSInteger titleIndex, NSString *title);
 @property (nonatomic, strong) UIColor *viewBackgroundColor;   //背景色
 @property (nonatomic, strong) UIColor *titleColor;            //索引标题颜色
 @property (nonatomic, strong) UIFont *titleFont;              //索引标题字体
+@property (nonatomic, assign) UIEdgeInsets btnEdgeInsets;     //btn中图片的EdgeInsets, 默认为 UIEdgeInsetsZero
 
 /**
- *  便利构造器初始化方法
+ *  初始化方法
  *
  *  @param frame         索引视图的 frame
  *  @param indexTitles   索引标题的数组, 可以是 NSString 或 UIImage 类型的对象
@@ -38,5 +39,10 @@ typedef NSInteger (^tapBlock) (NSInteger titleIndex, NSString *title);
  *  单独设置某一个索引标题的字体
  */
 - (void)setTitleFont:(UIFont *)titleFont titleIndex:(NSInteger)index;
+
+/**
+ *  单独设置某一个索引图片的EdgeInsets
+ */
+- (void)setBtnContentEdgeInsets:(UIEdgeInsets)edgeInsets imageIndex:(NSInteger)index;
 
 @end

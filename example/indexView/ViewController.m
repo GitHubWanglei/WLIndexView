@@ -44,6 +44,7 @@
         // 选中某一个title时, 自定义返回某一个section
         return titleIndex;
     };
+    [indexView setBtnContentEdgeInsets:UIEdgeInsetsMake(10, 0, 10, 0) imageIndex:1];
     
     //*******************************************添加索引视图*********************************************************
     
