@@ -40,9 +40,9 @@
     indexView.titleFont = [UIFont systemFontOfSize:14];
     [indexView setTitleColor:[UIColor redColor] titleIndex:3];
     [indexView setTitleFont:[UIFont systemFontOfSize:25] titleIndex:5];
-    indexView.tapIndexTitleBtn = ^(NSInteger index, NSString *title){
+    indexView.tapIndexTitleBtn = ^(NSInteger titleIndex, NSString *title){
         // 选中某一个title时, 自定义返回某一个section
-        return index;
+        return titleIndex;
     };
     
     //*******************************************添加索引视图*********************************************************

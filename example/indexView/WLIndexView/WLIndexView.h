@@ -7,17 +7,17 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NSInteger (^tapBlock) (NSInteger index, NSString *title);
+typedef NSInteger (^tapBlock) (NSInteger titleIndex, NSString *title);
 
 @interface WLIndexView : UIView
 
-@property (nonatomic, strong) NSArray *indexTitles; //索引标题数组,可接受 NSString 或 UIImage 类型
+@property (nonatomic, strong) NSArray *indexTitles;      //索引标题数组,可接受 NSString 或 UIImage 类型
 @property (nonatomic, strong) tapBlock tapIndexTitleBtn; //点击或滑动到某一个索引button的block回调
-@property (nonatomic, assign) BOOL isHaveAnimation; //切换section时是否有动画
+@property (nonatomic, assign) BOOL isHaveAnimation;      //切换section时是否有动画
 
-@property (nonatomic, strong) UIColor *viewBackgroundColor; //背景色
-@property (nonatomic, strong) UIColor *titleColor; //索引标题颜色
-@property (nonatomic, strong) UIFont *titleFont; //索引标题字体
+@property (nonatomic, strong) UIColor *viewBackgroundColor;   //背景色
+@property (nonatomic, strong) UIColor *titleColor;            //索引标题颜色
+@property (nonatomic, strong) UIFont *titleFont;              //索引标题字体
 
 /**
  *  便利构造器初始化方法
@@ -26,8 +26,6 @@ typedef NSInteger (^tapBlock) (NSInteger index, NSString *title);
  *  @param indexTitles   索引标题的数组, 可以是 NSString 或 UIImage 类型的对象
  *  @param tableView     索引所要关联的 tableView
  *  @param sectionsCount 所要关联的tableView的section数量, sectionsCount必须大于或等于indexTitles数量
- *
- *  @return WLIndexView实例
  */
 + (instancetype)viewWithFrame:(CGRect)frame indexTitles:(NSArray *)indexTitles tableView:(UITableView *)tableView tableViewSectionsCount:(NSInteger)sectionsCount;
 

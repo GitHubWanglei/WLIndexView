@@ -9,11 +9,11 @@
 
 @interface WLIndexView ()
 
-@property (nonatomic, strong) UITableView *tableView; //所要添加索引视图的tableView
-@property (nonatomic, assign) NSInteger sectionsCount; //关联的 tableView 的数量
+@property (nonatomic, weak) UITableView *tableView;      //所要添加索引视图的tableView
+@property (nonatomic, assign) NSInteger sectionsCount;   //关联的 tableView 的数量
 
 @property (nonatomic, strong) UIButton *lastSelectedBtn; //上一次选中的按钮
-@property (nonatomic, assign) CGFloat buttonH; //button的高度
+@property (nonatomic, assign) CGFloat buttonH;           //button的高度
 
 @end
 
@@ -23,9 +23,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         if (indexTitles.count) {
-            
             self.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
-            
             self.tableView = tableView;
             self.sectionsCount = sectionsCount;
             self.indexTitles = indexTitles;
@@ -36,10 +34,8 @@
                 return nil;
             }
             [self creatIndexBtnsWithIndexs:self.indexTitles];
-            
             UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panInWhichIndexButton:)];
             [self addGestureRecognizer:panGesture];
-            
         }
     }
     return self;
